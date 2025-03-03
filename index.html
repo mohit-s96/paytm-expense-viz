@@ -72,13 +72,19 @@
   <body>
     <h1>Paytm UPI Expense Visualization</h1>
     <div class="d-flex justify-center">
-      <label for="pdfUpload" class="me-2"
-        >Choose paytm expenses pdf file:</label
-      >
-      <input type="file" id="pdfUpload" accept=".pdf" />
+      <div class="d-flex flex-column">
+        <label for="pdfUpload" class="me-2"
+          >Choose paytm expenses pdf file:</label
+        >
+        <input type="file" id="pdfUpload" accept=".pdf" />
+
+        <label for="jsonImport" class="me-2"> Import from JSON </label>
+        <input id="jsonImport" accept=".json" type="file" />
+      </div>
+
       <div class="d-flex justify-center">
         <button
-          class="btn btn-secondary"
+          class="btn btn-secondary h-50"
           id="jsonDl"
           onclick="downloadAsJSON()"
         >

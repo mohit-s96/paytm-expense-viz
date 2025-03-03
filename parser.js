@@ -44,6 +44,23 @@ document
     fileReader.readAsArrayBuffer(file);
   });
 
+document.getElementById("jsonImport").addEventListener("change", (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const fileReader = new FileReader();
+  fileReader.readAsText(file);
+  fileReader.onload = (e) => {
+    try {
+      const rawData = JSON.parse(e.target.result);
+      render(rawData);
+    } catch (error) {
+      console.error("JSON parsing error:", error);
+      setParsingError();
+    }
+  };
+});
+
 const parseJson = (json) => {
   const strings = json.pages
     .flatMap((x) => x.text)
