@@ -67,6 +67,12 @@
         max-height: 40vh;
         overflow-y: scroll;
       }
+      .expenses {
+        display: flex;
+        justify-content: center;
+        margin-left: 20px;
+        margin-top: 20px;
+      }
     </style>
   </head>
   <body>
@@ -90,6 +96,10 @@
         >
           Download data as JSON
         </button>
+      </div>
+      <div class="expenses">
+        Total Expenses during the selected period:
+        <span id="totalExpenses" style="margin-left: 4px">0</span>
       </div>
       <div
         class="text-danger align-items-center justify-center mx-2"

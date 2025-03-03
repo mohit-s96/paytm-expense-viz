@@ -41,6 +41,9 @@ const render = (rawData = []) => {
 
   let expenses = preprocessData(rawData);
 
+  const totalExpenses = expenses.reduce((acc, entry) => acc + entry.amount, 0);
+  document.getElementById("totalExpenses").textContent = totalExpenses;
+
   // Populate Filters
   const payeeFilter = document.getElementById("payeeFilter");
   new Set(
@@ -158,7 +161,18 @@ const render = (rawData = []) => {
     pieChart.data.datasets = [
       {
         data: Object.values(payeeData),
-        backgroundColor: ["#ff6384", "#36a2eb", "#ffce56", "#4bc0c0"],
+        backgroundColor: [
+          "#ff6384", // Pink-Red
+          "#36a2eb", // Light Blue
+          "#ffce56", // Yellow
+          "#4bc0c0", // Teal
+          "#9966ff", // Purple
+          "#ff9f40", // Orange
+          "#c9cbcf", // Light Gray
+          "#1f77b4", // Deep Blue
+          "#2ca02c", // Green
+          "#d62728", // Dark Red
+        ],
       },
     ];
     pieChart.update();
