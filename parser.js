@@ -83,6 +83,9 @@ const parseJson = (json) => {
           return;
         }
       }
+      if (column.value === "accountLast4Digits") {
+        if (!strings[i - 1]?.endsWith(" -")) return;
+      }
       let parsed = column.parser(strings[i]);
       if (typeof column.consume === "function") {
         while (column.consume(strings[++i])) {
@@ -248,7 +251,8 @@ const columnMeta = [
     label: "Details",
     parser: identityParser,
     consume: (str) => {
-      return str && !str?.endsWith(" -");
+      const regex = / -( [A-Za-z0-9]{4})?$/;
+      return str && !regex.test(str) && str !== "UPI Linked Bank";
     },
   },
   {

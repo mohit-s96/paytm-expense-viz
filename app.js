@@ -41,7 +41,9 @@ const render = (rawData = []) => {
 
   let expenses = preprocessData(rawData);
 
-  const totalExpenses = expenses.reduce((acc, entry) => acc + entry.amount, 0);
+  const totalExpenses = expenses
+    .reduce((acc, entry) => acc + entry.amount, 0)
+    ?.toFixed(2);
   document.getElementById("totalExpenses").textContent = totalExpenses;
 
   // Populate Filters
